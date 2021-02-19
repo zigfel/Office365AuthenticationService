@@ -22,7 +22,7 @@ namespace AAD.Controllers
         {
             try
             {
-                string userID = User.Identity.Name;
+                string userID = ((ClaimsPrincipal)User).FindFirst("preferred_username").Value;
                 string token = CheckManageCache(userID);
                 if (token != "")
                     return token;
